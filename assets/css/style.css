@@ -765,9 +765,8 @@ section {
 
 .courses .course-content h4 {
   font-size: 14px;
-  background: #5cd2c6;
   padding: 7px 14px;
-  color: #fff;
+  color: #000;
   margin: 0;
 }
 
@@ -798,6 +797,29 @@ section {
 .courses .trainer .trainer-rank {
   font-size: 18px;
   color: #657a6d;
+}
+/* Estilos generales para el botón */
+.modern-btn {
+  background-color: #5cd2c6;
+  padding: 10px 20px;
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Estilos adicionales si es necesario */
+.modern-btn a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Agregar sombra para un aspecto más moderno */
+.modern-btn {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 /*--------------------------------------------------------------
@@ -1568,4 +1590,43 @@ section {
   background: #3ac162;
   color: #fff;
   text-decoration: none;
+}
+
+#miTabla {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+#miTabla th,
+#miTabla td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+#miTabla th {
+  background-color: #3498db;
+  color: #fff;
+}
+
+#miTabla tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+#miTabla tbody tr:hover {
+  background-color: #e0e0e0;
+}
+
+.float {
+  transition: 0.5s, color 0.1s;
+  -webkit-transition: 0.5s, color 0.1s;
+  -moz-transition: 0.5s, color 0.1s;
+}
+
+.float:hover {
+  box-shadow: 0 8px 8px 0 #000000, 0 8px 8px 0 #000000;
+  transform: translate(0px, 5px);
+  -webkit-transform: translate(0px, 5px);
+  -moz-transform: translate(0px, 5px);
 }

@@ -83,6 +83,10 @@
           </li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
+        <form id="miFormulario" class="d-flex ms-4" role="search">
+          <input id="campoBusqueda" class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
+          <button class="btn btn-outline-success" onsubmit="search()" type="submit">Buscar</button>
+        </form>
       </nav><!-- .navbar -->
 
     </div>
@@ -559,6 +563,7 @@
   <script src="assets/js/main.js"></script>
   <script src="./assets/js/dist/main.bundle.js"></script>
   <script src="./assets/js/accesibilidad.js"></script>
+  <script src="./assets/js/buscar.js"></script>
 </body>
 
 </html>
