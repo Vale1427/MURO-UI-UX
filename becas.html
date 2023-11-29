@@ -34,6 +34,98 @@
     <link href="assets/css/style.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.css" />
 
+    <style>
+        /* Estilos iniciales del botón */
+        .btn {
+            margin-bottom: 35px;
+            background-color: #5CD2C6;
+            color: #000000;
+            border: 1px solid #000000;
+            transition: background-color 0.3s, transform 0.3s;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        /* Estilo al pasar el mouse por encima */
+        .btn:hover {
+            background-color: #4CAEA3;
+            transform: scale(1.1);
+        }
+
+        /* Estilo al hacer clic en el botón */
+        .btn.active {
+            background-color: #4CAEA3;
+            transform: scale(0.9);
+        }
+
+        .card {
+            margin-bottom: 50px;
+            border: 1px solid #ddd;
+            /* Color del borde */
+            border-radius: 8px;
+            /* Borde redondeado */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            /* Sombra suave */
+            transition: transform 0.3s ease-in-out;
+            /* Transición suave al pasar el mouse */
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            /* Efecto de escala al pasar el mouse */
+        }
+
+        .card-section {
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            /* Asegura que los bordes redondeados se apliquen correctamente */
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .card-section:hover {
+            transform: scale(1.05);
+        }
+
+        .card-section .row {
+            padding: 20px;
+        }
+
+        .card-section img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            /* Borde redondeado */
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            /* Sombra tridimensional */
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .card-section:hover img {
+            transform: translateZ(20px);
+            /* Efecto de salida de pantalla */
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
+            /* Aumenta la intensidad de la sombra en hover */
+        }
+
+        .rotate-container {
+            perspective: 1000px;
+            position: relative;
+            overflow: hidden;
+
+        }
+
+        .rotate-image {
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+            /* Ajusta la duración y la función de temporización según tus preferencias */
+        }
+    </style>
+
     <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.js"
         integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
@@ -84,13 +176,6 @@
                     </li>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
-                <div class="box">
-                    <form name="search">
-                        <input type="text" class="input" name="txt" onmouseout="this.value = ''; this.blur();">
-                    </form>
-                    <i class="fas fa-search"></i>
-
-                </div>
             </nav><!-- .navbar -->
 
         </div>
@@ -106,14 +191,13 @@
         <div>
             <ol class="breadcrumb p-4">
                 <li><a href="index.html" class="me-1">Inicio</a></li>
-                <li> / Carreras / Becas</li>
+                <li> / Becas</li>
             </ol>
-            <div class="d-flex justify-content-center align-items-start" style="height: auto;">
-                <img src="assets/img/portada-becas.png" alt="" class="img-fluid">
+            <div class="d-flex justify-content-center align-items-start rotate-container" style="height: auto;">
+                <img src="assets/img/portada-becas.png" alt="" class="img-fluid rotate-image">
             </div>
         </div>
-
-        <div class="container mt-5">
+        <div class="container mt-5 card-section">
             <div class="row">
                 <div class="col-md-6">
                     <h2>Apoyos Internos</h2>
@@ -138,7 +222,7 @@
             <div class="row">
                 <!-- Tarjeta 1 -->
                 <div class="col-sm-4 text-center">
-                    <div class="card border-0">
+                    <div class="card">
                         <img src="assets/img/becas-2.svg" class="card-img-top" alt="Imagen 1">
                         <div class="card-body">
                             <h3 class="card-title">Jóvenes Escribiendo el Futuro</h3>
@@ -147,14 +231,15 @@
                                 educación inclusiva...</p>
                             <button class="float modern-btn">
                                 <a href="https://becasbenitojuarez.net/convocatoria-beca-jovenes-escribiendo-el-futuro-2023-2/"
-                                    target="_blank">Ver más</a>
+                                    target="_blank" onclick="buttonClick(event)">Ver
+                                    más</a>
                             </button>
                         </div>
                     </div>
                 </div>
                 <!-- Tarjeta 2 -->
                 <div class="col-sm-4 text-center">
-                    <div class="card border-0">
+                    <div class="card">
                         <img src="assets/img/becas-3.png" class="card-img-top mx-auto" alt="Imagen 2"
                             style="max-width: 85%; margin-top: 35px; margin-bottom: 45px;">
                         <div class="card-body">
@@ -163,14 +248,16 @@
                                 Becas Jóvenes Escribiendo el Futuro. Las Becas Elisa Acuña desean impulsar a quienes
                                 buscan terminar su formación académica...</p>
                             <button class="float modern-btn">
-                                <a href="https://becasbenitojuarez.net/becas-elisa-acuna/" target="_blank">Ver más</a>
+                                <a href="https://becasbenitojuarez.net/becas-elisa-acuna/" target="_blank"
+                                    onclick="buttonClick(event)">Ver
+                                    más</a>
                             </button>
                         </div>
                     </div>
                 </div>
                 <!-- Tarjeta 3 -->
                 <div class="col-sm-4 text-center">
-                    <div class="card border-0">
+                    <div class="card">
                         <img src="assets/img/becas-4.png" class="card-img-top" alt="Imagen 3"
                             style="margin-bottom: 18px;">
                         <div class="card-body">
@@ -180,7 +267,8 @@
                                 país...</p>
                             <button class="float modern-btn">
                                 <a href="https://www.fundacionbbva.mx/becas-bbva-para-chavos-que-inspiran/"
-                                    target="_blank">Ver más</a>
+                                    target="_blank" onclick="buttonClick(event)">Ver
+                                    más</a>
                             </button>
                         </div>
                     </div>
@@ -219,6 +307,55 @@
     </footer><!-- End Footer -->
     <script src="./assets/js/dist/main.bundle.js"></script>
     <script src="./assets/js/accesibilidad.js"></script>
+    <script>
+        // Variable de control para asegurar que el enlace no se abra más de una vez
+        var enlaceAbierto = false;
+
+        // Función para manejar el clic en el botón
+        function buttonClick(event) {
+            // Evitar que el enlace se abra de inmediato
+            event.preventDefault();
+
+            // Agregar/eliminar la clase 'active' al botón al hacer clic
+            var btn = event.target;
+            btn.classList.toggle('active');
+
+            // Abrir el enlace solo si la clase 'active' está presente y no se ha abierto antes
+            if (btn.classList.contains('active') && !enlaceAbierto) {
+                enlaceAbierto = true;
+                setTimeout(function () {
+                    window.open(btn.getAttribute('href'), '_blank');
+                    // Eliminar la clase 'active' después de abrir el enlace
+                    btn.classList.remove('active');
+                    // Restablecer la variable para permitir que el enlace se abra nuevamente
+                    enlaceAbierto = false;
+                }, 200); // 2000 milisegundos = 2 segundos
+            }
+        }
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const container = document.querySelector('.rotate-container');
+            const image = document.querySelector('.rotate-image');
+
+            container.addEventListener('mousemove', function (e) {
+                const { offsetX, offsetY, target } = e;
+                const { offsetWidth, offsetHeight } = target;
+
+                const sensitivity = 0.1; // Ajusta la sensibilidad del movimiento
+                const x = (offsetX / offsetWidth - 0.5) * 360 * sensitivity;
+                const y = (offsetY / offsetHeight - 0.5) * -360 * sensitivity;
+
+                image.style.transform = `rotateX(${y}deg) rotateY(${x}deg)`;
+                image.style.boxShadow = `0 20px 50px rgba(0, 0, 0, 0.3)`; /* Ajusta el tamaño y color de la sombra según tus preferencias */
+            });
+
+            container.addEventListener('mouseleave', function () {
+                image.style.transform = 'rotateX(0deg) rotateY(0deg)';
+                image.style.boxShadow = 'none'; // Restablece la sombra
+            });
+        });
+    </script>
 </body>
 
 </html>
