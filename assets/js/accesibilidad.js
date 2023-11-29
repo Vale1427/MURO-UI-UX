@@ -13,16 +13,17 @@ let labels = {
   underlineLinks: "Subrayar enlaces",
   bigCursor: "Cursor Grande",
   readingGuide: "Guía de lectura",
-  textToSpeech: "Texto a voz",
-  speechToText: "Dictado",
+  // textToSpeech: "Texto a voz",
+  // speechToText: "Dictado",
   disableAnimations: "Desactivar animaciones",
 };
 
 let options = {
   labels: labels,
 };
-options.textToSpeechLang = "es-MX"; // or any other language
-options.speechToTextLang = "es-MX"; // or any other language
+
+//options.textToSpeechLang = "es-MX"; // or any other language
+//options.speechToTextLang = "es-MX"; // or any other language
 options.icon = {
   circular: true,
   position: {
@@ -32,6 +33,11 @@ options.icon = {
 
     type: "absolute",
   },
+};
+
+options.modules = {
+  textToSpeech: [false],
+  speechToText: [false],
 };
 
 window.addEventListener(
